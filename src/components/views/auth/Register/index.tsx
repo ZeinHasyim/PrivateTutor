@@ -2,15 +2,17 @@ import { useRouter } from "next/router";
 import styles from "./Register.module.scss";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
+import Input from "@/components/ui/input";
+import Button from "@/components/ui/input/Button";
 const RegisterView = () => {
-    const [isLoading, setisLoading] = useState(false);
-    const [error, setError] = useState('');
+  const [isLoading, setisLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const { push } = useRouter();
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setisLoading(true);
-    setError('');
+    setError("");
     const form = event.target as HTMLFormElement;
     const data = {
       email: form.email.value,
@@ -32,8 +34,8 @@ const RegisterView = () => {
       setisLoading(false);
       push("/auth/login");
     } else {
-        setisLoading(false);
-        setError('Email is already registered');
+      setisLoading(false);
+      setError("Email is already registered");
     }
   };
 
@@ -43,43 +45,13 @@ const RegisterView = () => {
       {error && <p className={styles.register__error}>{error}</p>}
       <div className={styles.register__form}>
         <form onSubmit={handleSubmit}>
-          <div className={styles.register__form__item}>
-            <label htmlFor="email">Email</label>
-            <input
-              name="email"
-              id="email"
-              type="email"
-              className={styles.register__form__item__input}
-            />
-          </div>
-          <div className={styles.register__form__item}>
-            <label htmlFor="fullname">Fullname</label>
-            <input
-              name="fullname"
-              id="fullname"
-              type="text"
-              className={styles.register__form__item__input}
-            />
-          </div>
-          <div className={styles.register__form__item}>
-            <label htmlFor="phone">Phone</label>
-            <input
-              name="phone"
-              id="phone"
-              type="text"
-              className={styles.register__form__item__input}
-            />
-          </div>
-          <div className={styles.register__form__item}>
-            <label htmlFor="password">Password</label>
-            <input
-              name="password"
-              id="password"
-              type="password"
-              className={styles.register__form__item__input}
-            />
-          </div>
-          <button type="submit" className={styles.register__form__button}>{isLoading ? 'Loading...' : 'Register'}</button>
+          <Input label="Email" name="email" type="email" />
+          <Input label="Fullname" name="fullname" type="text" />
+          <Input label="Phone" name="phone" type="number" />
+          <Input label="Password" name="password" type="password" />
+          <Button type="submit" className={styles.register__form__button} variant="primary">
+            {isLoading ? "Loading..." : "Register"}
+          </Button>
         </form>
       </div>
       <p className={styles.register__link}>
