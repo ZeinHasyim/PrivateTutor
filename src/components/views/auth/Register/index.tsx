@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import styles from "./Register.module.scss";
 import { FormEvent, useState } from "react";
-import Input from "@/components/ui/input";
-import Button from "@/components/ui/input/Button";
+import Input from "@/components/ui/Input";
+import Button from "@/components/ui/Button";
 import authServices from "@/services/auth";
 import AuthLayout from "@/components/layouts/AuthLayout";
 const RegisterView = () => {

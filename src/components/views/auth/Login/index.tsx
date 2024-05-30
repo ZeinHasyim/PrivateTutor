@@ -2,8 +2,8 @@ import { useRouter } from "next/router";
 import styles from "./Login.module.scss";
 import { FormEvent, useState } from "react";
 import { signIn } from "next-auth/react";
-import Input from "@/components/ui/input";
-import Button from "@/components/ui/input/Button";
+import Input from "@/components/ui/Input";
+import Button from "@/components/ui/Button";
 import AuthLayout from "@/components/layouts/AuthLayout";
 
 const LoginView = () => {
