@@ -45,6 +45,7 @@ const LoginView = () => {
       title="Login"
       link="/auth/register"
       linkText="Don't have an account? Sign up "
+      error={error}
     >
       <form onSubmit={handleSubmit}>
         <Input label="Email" name="email" type="email" />

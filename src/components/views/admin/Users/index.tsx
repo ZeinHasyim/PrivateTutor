@@ -27,7 +27,7 @@ const UsersAdminView = (props: PropTypes) => {
               <tr>
                 <th>#</th>
                 <th>Fullname</th>
-                <th>Email</th>collectionName: string
+                <th>Email</th>
                 <th>Phone</th>
                 <th>Role</th>
                 <th>Action</th>
@@ -65,20 +65,21 @@ const UsersAdminView = (props: PropTypes) => {
           </table>
         </div>
       </AdminLayout>
-      {Object.keys(updatedUser).length && (
+      {Object.keys(updatedUser).length > 0 ? (
         <ModalUpdateUser
           updatedUser={updatedUser}
           setUpdatedUser={setUpdatedUser}
           setUsersData={setUsersData}
         />
-      )}
-      {Object.keys(deletedUser).length && (
+      ) : null}
+
+      {Object.keys(deletedUser).length > 0 ? (
         <ModalDeleteUser
           deletedUser={deletedUser}
           setDeletedUser={setDeletedUser}
           setUsersData={setUsersData}
         />
-      )}
+      ) : null}
     </>
   );
 };
