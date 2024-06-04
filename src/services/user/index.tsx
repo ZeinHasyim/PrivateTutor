@@ -4,7 +4,7 @@ const userServices = {
   getAllUsers: () => instance.get("/api/user"),
   updateUser: (id: string, data: any, token: string) =>
     instance.put(
-      `/api/user/${id}`,
+      `/api/user/profile/${id}`,
       { data },
       {
         headers: {
@@ -14,6 +14,12 @@ const userServices = {
     ),
   deleteUser: (id: string, token: string) =>
     instance.delete(`/api/user/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }),
+  getProfile: (token: string) =>
+    instance.get("/api/user/profile", {
       headers: {
         Authorization: `Bearer ${token}`,
       },

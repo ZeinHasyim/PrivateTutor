@@ -24,8 +24,10 @@
         gap: 10px;
         transition: 0.3s;
         padding: 10px 15px;
+        border-radius: 8px;
         &__icon {
           font-size: 32px;
+          
         }
         &:hover {
           background-color: #fff;
@@ -33,9 +35,9 @@
           transition: 0.3s;
         }
         &__active {
-            background-color: #fff;
-            color: #000;
-            transition: 0.3s;
+          background-color: #fff;
+          color: #000;
+          transition: 0.3s;
         }
       }
     }
