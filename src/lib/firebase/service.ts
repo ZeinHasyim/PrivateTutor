@@ -104,7 +104,7 @@ export async function deleteData(
 export async function uploadFile(userId: string, file: any, callback: Function) {
   if (file) {
     if (file.size < 1048576) {
-      const newName = "profile." + file.name.split(".")[1];
+      const newName = 'profile.' + file.name.split(".")[1];
       const storageRef = ref(storage, `images/users/${userId}/${newName}`);
       const uploadTask = uploadBytesResumable(storageRef, file);
       uploadTask.on(
@@ -119,12 +119,12 @@ export async function uploadFile(userId: string, file: any, callback: Function) 
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL: any) => {
-            callback(downloadURL)
+            callback(true, downloadURL)
           })
         }
       );
     } else {
-      return false;
+      return callback(false);
     }
   }
   return true;

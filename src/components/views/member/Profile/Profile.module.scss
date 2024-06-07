@@ -3,28 +3,37 @@
     font-size: 32px;
   }
   &__main {
-    display: flex;
-    gap: 40px;
-    margin-top: 40px;
-    &__avatar {
+    &__row {
+      display: flex;
+      gap: 40px;
+      margin-top: 40px;
+      &__avatar {
         width: 25%;
         display: flex;
         align-items: center;
         justify-content: center;
-        
         box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
         border-radius: 8px;
         flex-direction: column;
         padding: 40px;
-        img{
-          border-radius: 50%;
-          width: 80%;
-          height: 80%;
+        &__title {
+          margin-bottom: 20px;
         }
-        &__label{
+        &__image {
+          border-radius: 50%;
+          width: 200px;
+          height: 200px;
+          background-color: #eee;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 64px;
+          font-weight: bold;
+        }
+        &__label {
           margin-top: 20px;
           background-color: #eee;
-          float:left;
+          float: left;
           width: 100%;
           display: flex;
           flex-direction: column;
@@ -42,16 +51,23 @@
           position: absolute;
           z-index: -1;
         }
-        &__button{
+        &__button {
           width: 100%;
           margin-top: 20px;
         }
-    }
-    &__detail {
-        width: 75%;
+      }
+      &__profile {
+        width: 50%;
         box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
         padding: 40px 40px;
         border-radius: 8px;
+      }
+      &__password {
+        width: 25%;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        border-radius: 8px;
+        padding: 40px;
+      }
     }
   }
 }

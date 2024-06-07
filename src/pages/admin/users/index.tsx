@@ -1,8 +1,9 @@
 import UsersAdminView from "@/components/views/admin/Users";
 import userServices from "@/services/user";
+import { set } from "firebase/database";
 import { useEffect, useState } from "react";
 
-const AdminUsersPage = () => {
+const AdminUsersPage = ({ setToaster}: any) => {
   const [users, setUsers] = useState([]);
   useEffect(() => {
     const getAllUsers = async () => {
@@ -11,7 +12,7 @@ const AdminUsersPage = () => {
     };
     getAllUsers();
   }, []);
-  return <UsersAdminView users={users} />;
+  return <UsersAdminView users={users} setToaster={setToaster} />;
 };
 
 export default AdminUsersPage;

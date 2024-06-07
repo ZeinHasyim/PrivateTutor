@@ -48,7 +48,8 @@ const authOptions: NextAuthOptions = {
         token.fullname = user.fullname;
         token.phone = user.phone;
         token.role = user.role;
-        token.id = user.id
+        token.id = user.id;
+        token.image = user.image;
       }
 
       if (account?.provider === "google") {

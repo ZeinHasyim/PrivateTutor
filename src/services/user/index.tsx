@@ -4,7 +4,7 @@ const userServices = {
   getAllUsers: () => instance.get("/api/user"),
   updateUser: (id: string, data: any, token: string) =>
     instance.put(
-      `/api/user/profile/${id}`,
+      `/api/user/${id}`,
       { data },
       {
         headers: {
@@ -24,6 +24,16 @@ const userServices = {
         Authorization: `Bearer ${token}`,
       },
     }),
+  updateProfile: (data: any, token: string) =>
+    instance.put(
+      `/api/user/profile`,
+      { data },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    ),
 };
 
 export default userServices;
