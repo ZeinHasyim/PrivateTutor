@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import { uploadFile } from "@/lib/firebase/service";
 import userServices from "@/services/user";
-import { User } from "@/type/user.type";
+import { User } from "@/types/user.type";
 
 type PropTypes = {
   profile: User | any;

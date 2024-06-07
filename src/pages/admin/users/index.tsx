@@ -1,6 +1,5 @@
 import UsersAdminView from "@/components/views/admin/Users";
 import userServices from "@/services/user";
-import { set } from "firebase/database";
 import { useEffect, useState } from "react";
 
 const AdminUsersPage = ({ setToaster}: any) => {
