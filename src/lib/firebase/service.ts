@@ -101,26 +101,31 @@ export async function deleteData(
     });
 }
 
-export async function uploadFile(userId: string, file: any, callback: Function) {
+export async function uploadFile(
+  id: string,
+  file: any,
+  newName: string,
+  collection: string,
+  callback: Function
+) {
   if (file) {
     if (file.size < 1048576) {
-      const newName = 'profile.' + file.name.split(".")[1];
-      const storageRef = ref(storage, `images/users/${userId}/${newName}`);
+      const storageRef = ref(storage, `images/${collection}/${id}/${newName}`);
       const uploadTask = uploadBytesResumable(storageRef, file);
       uploadTask.on(
         "state_changed",
         (snapshot) => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            // console.log(progress)
+          // console.log(progress)
         },
         (error) => {
           console.log(error);
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL: any) => {
-            callback(true, downloadURL)
-          })
+            callback(true, downloadURL);
+          });
         }
       );
     } else {
