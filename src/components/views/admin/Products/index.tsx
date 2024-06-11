@@ -6,6 +6,7 @@ import convertIDR from "@/utils/currency";
 import { Product } from "@/types/product.type";
 import Image from "next/image";
 import ModalAddProduct from "./ModalAddProduct";
+import ModalUpdateProduct from "./ModalUpdateProduct";
 
 type PropTypes = {
   products: Product[];
@@ -15,6 +16,7 @@ const ProductsAdminView = (props: PropTypes) => {
   const { products, setToaster } = props;
   const [productsData, setProductsData] = useState<Product[]>([]);
   const [modalAddProduct, setModalAddProduct] = useState(false);
+  const [updatedProduct, setUpdatedProduct] = useState<Product | {}>({});
   useEffect(() => {
     setProductsData(products);
   }, [products]);
@@ -71,6 +73,7 @@ const ProductsAdminView = (props: PropTypes) => {
                         <Button
                           type="button"
                           className={styles.products__table__action__edit}
+                          onClick={() => setUpdatedProduct(product)}
                         >
                           <i className="bx bx-edit"></i>
                         </Button>
@@ -104,6 +107,14 @@ const ProductsAdminView = (props: PropTypes) => {
       {modalAddProduct && (
         <ModalAddProduct
           setModalAddProduct={setModalAddProduct}
+          setToaster={setToaster}
+          setProductsData={setProductsData}
+        />
+      )}
+      {Object.keys(updatedProduct).length > 0 && (
+        <ModalUpdateProduct
+          setUpdatedProduct={setUpdatedProduct}
+          updatedProduct = {updatedProduct}
           setToaster={setToaster}
           setProductsData={setProductsData}
         />
