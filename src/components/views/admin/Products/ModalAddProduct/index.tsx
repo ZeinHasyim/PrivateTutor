@@ -22,7 +22,6 @@ const ModalAddProduct = (props: Proptypes) => {
   const [isLoading, setIsLoading] = useState(false);
   const [stockCount, setStockCount] = useState([{ size: "", qty: 0 }]);
   const [uploadedImage, setUploadedImage] = useState<File | null>(null);
-  const session: any = useSession();
 
   const handleStock = (e: any, i: number, type: string) => {
     const newStockCount: any = [...stockCount];
@@ -44,11 +43,7 @@ const ModalAddProduct = (props: Proptypes) => {
             const data = {
               image: newImageURL,
             };
-            const result = await productServices.updateProduct(
-              id,
-              data,
-              session.data?.accessToken
-            );
+            const result = await productServices.updateProduct(id, data);
             if (result.status === 200) {
               setIsLoading(false);
               setUploadedImage(null);
@@ -83,19 +78,23 @@ const ModalAddProduct = (props: Proptypes) => {
     event.preventDefault();
     setIsLoading(true);
     const form: any = event.target as HTMLFormElement;
+    const stock = stockCount.map((stock) => {
+      return {
+        size: stock.size,
+        qty: parseInt(`${stock.qty}`),
+      };
+    });
     const data = {
       name: form.name.value,
-      price: form.price.value,
+      price: parseInt(form.price.value),
+      description: form.description.value,
       category: form.category.value,
       status: form.status.value,
-      stock: stockCount,
+      stock: stock,
       image: "",
     };
 
-    const result = await productServices.addProduct(
-      data,
-      session.data?.accessToken
-    );
+    const result = await productServices.addProduct(data);
 
     if (result.status === 200) {
       uploadImage(result.data.data.id, form);
@@ -110,8 +109,22 @@ const ModalAddProduct = (props: Proptypes) => {
           name="name"
           type="text"
           placeholder="Insert Product Name"
+          className={styles.form__input}
         />
-        <Input label="Price" name="price" type="number" />
+        <Input
+          label="Price"
+          name="price"
+          type="number"
+          placeholder="Insert Product Price"
+          className={styles.form__input}
+        />
+        <Input
+          label="Description"
+          name="description"
+          type="text"
+          placeholder="Insert Product Description"
+          className={styles.form__input}
+        />
         <Select
           label="Category"
           name="category"
@@ -119,8 +132,10 @@ const ModalAddProduct = (props: Proptypes) => {
             { label: "Men", value: "men" },
             { label: "Women", value: "women" },
           ]}
+          className={styles.form__input}
         />
         <Select
+          className={styles.form__input}
           label="status"
           name="status"
           options={[
@@ -139,7 +154,7 @@ const ModalAddProduct = (props: Proptypes) => {
               className={styles.form__image_preview}
             />
           ) : (
-          <div className={styles.form__image__placeholder}> No Image</div>
+            <div className={styles.form__image__placeholder}> No Image</div>
           )}
 
           <InputFile
@@ -158,6 +173,7 @@ const ModalAddProduct = (props: Proptypes) => {
                   name="size"
                   type="text"
                   placeholder="Insert Product Size"
+                  className={styles.form__input}
                   onChange={(e) => {
                     handleStock(e, i, "size");
                   }}
@@ -169,6 +185,7 @@ const ModalAddProduct = (props: Proptypes) => {
                   name="qty"
                   type="number"
                   placeholder="Insert product quantity"
+                  className={styles.form__input}
                   onChange={(e) => {
                     handleStock(e, i, "qty");
                   }}

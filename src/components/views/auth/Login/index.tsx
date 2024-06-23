@@ -49,7 +49,6 @@ const LoginView = ({
         variant: "danger",
         message: "Login failed",
       });
-
     }
   };
 
@@ -61,8 +60,18 @@ const LoginView = ({
       setToaster={setToaster}
     >
       <form onSubmit={handleSubmit}>
-        <Input label="Email" name="email" type="email" />
-        <Input label="Password" name="password" type="password" />
+        <Input
+          className={styles.login__input}
+          label="Email"
+          name="email"
+          type="email"
+        />
+        <Input
+          className={styles.login__input}
+          label="Password"
+          name="password"
+          type="password"
+        />
         <Button
           type="submit"
           variant="primary"

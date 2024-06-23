@@ -1,4 +1,10 @@
-import { addData, deleteData, retriveData, updateData } from "@/lib/firebase/service";
+import {
+  addData,
+  deleteData,
+  retriveData,
+  retriveDataById,
+  updateData,
+} from "@/lib/firebase/service";
 import type { NextApiRequest, NextApiResponse } from "next";
 import jwt from "jsonwebtoken";
 
@@ -7,13 +13,25 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method == "GET") {
-    const data = await retriveData("products");
-    res.status(200).json({
-      status: true,
-      statusCode: 200,
-      message: "success",
-      data,
-    });
+    const { product }: any = req.query;
+
+    if (product && product[0]) {
+      const data = await retriveDataById("products", product[0]);
+      res.status(200).json({
+        status: true,
+        statusCode: 200,
+        message: "success",
+        data,
+      });
+    } else {
+      const data = await retriveData("products");
+      res.status(200).json({
+        status: true,
+        statusCode: 200,
+        message: "success",
+        data,
+      });
+    }
   } else if (req.method === "POST") {
     const token = req.headers.authorization?.split(" ")[1] || "";
     jwt.verify(
