@@ -1,15 +1,13 @@
 import { useRouter } from "next/router";
 import styles from "./Register.module.scss";
-import { Dispatch, FormEvent, SetStateAction, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import authServices from "@/services/auth";
 import AuthLayout from "@/components/layouts/AuthLayout";
-const RegisterView = ({
-  setToaster,
-}: {
-  setToaster: Dispatch<SetStateAction<{}>>;
-}) => {
+import { ToasterContext } from "@/contexts/ToasterContext";
+const RegisterView = () => {
+  const { setToaster } = useContext(ToasterContext);
   const [isLoading, setisLoading] = useState(false);
 
   const { push } = useRouter();
@@ -58,10 +56,30 @@ const RegisterView = ({
       setToaster={setToaster}
     >
       <form onSubmit={handleSubmit}>
-        <Input className={styles.register__input} label="Email" name="email" type="email" />
-        <Input className={styles.register__input} label="Fullname" name="fullname" type="text" />
-        <Input className={styles.register__input} label="Phone" name="phone" type="number" />
-        <Input className={styles.register__input} label="Password" name="password" type="password" />
+        <Input
+          className={styles.register__input}
+          label="Email"
+          name="email"
+          type="email"
+        />
+        <Input
+          className={styles.register__input}
+          label="Fullname"
+          name="fullname"
+          type="text"
+        />
+        <Input
+          className={styles.register__input}
+          label="Phone"
+          name="phone"
+          type="number"
+        />
+        <Input
+          className={styles.register__input}
+          label="Password"
+          name="password"
+          type="password"
+        />
         <Button
           type="submit"
           className={styles.register__button}

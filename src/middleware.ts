@@ -10,4 +10,5 @@ export default WithAuth(mainMiddleware, [
     'admin',
     'auth',
     'member',
+    'cart',
 ])
