@@ -89,7 +89,7 @@ const ModalProgres = (props: Proptypes) => {
                     <Button type="submit">Add new progress</Button>
                  </form>
                 {progres.progres.map((progres: any) => (
-                    <div>
+                    <div key={progres.id}>
                         <Button className={styles.progres_title} type="button">{progres.title}</Button>
                         <div className={styles.progres_description}>{progres.description}</div>
                     </div>
