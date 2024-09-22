@@ -1,0 +1,90 @@
+.orders {
+    &__table {
+        width: 100%;
+        border-spacing: 0;
+        border-collapse: collapse;
+        border: 1px solid #ddd;
+        margin-top: 40px;
+        th,
+        td{
+            text-align: left;
+            padding: 8px;
+        }
+        thead {
+            tr {
+                background-color: #f2f2f2;
+            }
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        &__startEnd{
+            display: flex;
+            &__notSet{
+                background-color: #000;
+                padding: 4px 14px;
+                color: #fff;
+                border-radius: 4px;
+            }
+            &__start{
+                background-color: green;
+                padding: 4px 14px;
+                color: #fff;
+                border-radius: 4px;
+                font-size: 14px;
+                text-align: center;
+            }
+            &__dash{
+                padding: 4px;
+            }
+            &__end{
+                background-color: red;
+                padding: 4px 14px;
+                color: #fff;
+                border-radius: 4px;
+                font-size: 14px;
+                text-align: center;
+            }
+        }
+
+        &__action {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            &__edit {
+              background-color: #fce343;
+              padding: 15px;
+              color: #000;
+              i {
+                font-size: 20px;
+              }
+            }
+            &__delete {
+              background-color: #ff6363;
+              padding: 15px;
+              i {
+                font-size: 20px;
+              }
+            }
+          }
+
+    }
+}
+
+.badge{
+    padding: 4px 8px;
+    font-size: 10px;
+    display: inline-flex;
+    margin-right: 1px;
+}
+.pay_now{
+    padding: 4px 8px;
+    font-size: 10px;
+    display: inline-flex;
+    margin-right: 1px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

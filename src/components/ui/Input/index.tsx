@@ -9,13 +9,30 @@ type Propstypes = {
   disabled?: boolean;
   onChange?: (e: any) => void;
   className?: string;
+  min?: number,
+  max?: number
 };
 const Input = (props: Propstypes) => {
-  const { label, name, type, placeholder, defaultValue, disabled, onChange, className } =
-    props;
+  const {
+    label,
+    name,
+    type,
+    placeholder,
+    defaultValue,
+    disabled,
+    onChange,
+    className,
+    min,
+    max,
+  } = props;
+
   return (
-    <div className={`${styles.container} ${props.className}`}>
-      {label && <label className={styles.container__label} htmlFor={name}>{label}</label>}
+    <div className={`${styles.container} ${className}`}>
+      {label && (
+        <label className={styles.container__label} htmlFor={name}>
+          {label}
+        </label>
+      )}
       <input
         name={name}
         id={name}
@@ -25,6 +42,8 @@ const Input = (props: Propstypes) => {
         defaultValue={defaultValue}
         disabled={disabled}
         onChange={onChange}
+        min={min}
+        max={max}
       />
     </div>
   );

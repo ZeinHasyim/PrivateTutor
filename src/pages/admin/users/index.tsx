@@ -11,7 +11,7 @@ const AdminUsersPage = () => {
     };
     getAllUsers();
   }, []);
-  return <UsersAdminView users={users}  />;
+  return <UsersAdminView users={users}  />
 };
 
 export default AdminUsersPage;

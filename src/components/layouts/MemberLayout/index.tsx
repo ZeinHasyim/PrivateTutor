@@ -12,8 +12,8 @@ const listSidebarItem = [
     icon: "bxs-dashboard",
   },
   {
-    title: "Orders",
-    url: "/member/orders",
+    title: "Monitoring",
+    url: "/member/pembelajaran",
     icon: "bxs-cart",
   },
   {
@@ -27,7 +27,7 @@ const MemberLayout = (props: Proptypes) => {
   const { children } = props;
   return (
     <div className={styles.member}>
-      <Sidebar lists={listSidebarItem} />
+      <Sidebar name="Member" lists={listSidebarItem} />
       <div className={styles.member__main}>{children}</div>
     </div>
   );

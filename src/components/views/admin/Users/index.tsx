@@ -1,10 +1,10 @@
-import AdminLayout from "@/components/layouts/AdminLayout";
 import Button from "@/components/ui/Button";
 import styles from "./Users.module.scss";
 import { useEffect, useState } from "react";
 import ModalUpdateUser from "./ModalUpdateUser";
 import ModalDeleteUser from "./ModalDeleteUser";
 import { User } from "@/types/user.type";
+import AdminLayout from "@/components/layouts/AdminLayout";
 
 type PropTypes = {
   users: User[];
@@ -18,6 +18,7 @@ const UsersAdminView = (props: PropTypes) => {
   useEffect(() => {
     setUsersData(users);
   }, [users]);
+
   return (
     <>
       <AdminLayout>

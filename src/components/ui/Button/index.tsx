@@ -7,10 +7,11 @@ type Propstypes = {
     variant?: string;
     className?: string;
     disabled?: boolean;
+    hidden?: boolean;
 }
 
 const Button = (props: Propstypes) => {
-    const {type, onClick, children, variant = "primary", className, disabled } = props;
+    const {type, onClick, children, variant = "primary", className, disabled, hidden } = props;
   return (
     <>
       <button
@@ -18,6 +19,7 @@ const Button = (props: Propstypes) => {
         onClick={onClick}
         className={`${styles.button} ${styles[variant]} ${className}`}
         disabled={disabled}
+        hidden={hidden}
       >
         {children}
       </button>

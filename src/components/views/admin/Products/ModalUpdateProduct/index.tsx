@@ -3,7 +3,13 @@ import Input from "@/components/ui/Input";
 import Modal from "@/components/ui/Modal";
 import Select from "@/components/ui/Select";
 import styles from "./ModalUpdateProduct.module.scss";
-import { Dispatch, FormEvent, SetStateAction, useContext, useState } from "react";
+import {
+  Dispatch,
+  FormEvent,
+  SetStateAction,
+  useContext,
+  useState,
+} from "react";
 import { Product } from "@/types/product.type";
 import InputFile from "@/components/ui/InputFile";
 import productServices from "@/services/product";
@@ -18,13 +24,11 @@ type Proptypes = {
 };
 
 const ModalUpdateProduct = (props: Proptypes) => {
-  const { updatedProduct, setUpdatedProduct,  setProductsData } =
-    props;
-    const { setToaster } = useContext(ToasterContext);
+  const { updatedProduct, setUpdatedProduct, setProductsData } = props;
+  const { setToaster } = useContext(ToasterContext);
   const [isLoading, setIsLoading] = useState(false);
   const [stockCount, setStockCount] = useState(updatedProduct.stock);
   const [uploadedImage, setUploadedImage] = useState<File | null>(null);
- 
 
   const handleStock = (e: any, i: number, type: string) => {
     const newStockCount: any = [...stockCount];
@@ -138,13 +142,20 @@ const ModalUpdateProduct = (props: Proptypes) => {
           className={styles.form__input}
         />
         <Select
-          label="status"
-          name="status"
+          label="Category"
+          name="category"
           options={[
-            { label: "Released", value: "true" },
-            { label: "Not Released", value: "false" },
+            { label: "Mata Pelajaran Akademik", value: "Mata Pelajaran Akademik" },
+            { label: "Bahasa Asing", value: "Bahasa Asing" },
+            { label: "Musik", value: "Musik" },
+            { label: "Seni", value: "Seni" },
+            { label: "Olahraga", value: "Olahraga" },
+            {
+              label: "Teknologi dan Komputer",
+              value: "Teknologi dan Komputer",
+            },
+            { label: "Persiapan Ujian", value: "Persiapan Ujian" },
           ]}
-          defaultValue={updatedProduct.status}
           className={styles.form__input}
         />
 

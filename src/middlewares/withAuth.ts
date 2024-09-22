@@ -6,12 +6,13 @@ import {
   NextResponse,
 } from "next/server";
 
+const onlyEditor = ["editor"];
 const onlyAdmin = ["admin"];
 const authPage = ["auth"];
 
 export default function WithAuth(
   middleware: NextMiddleware,
-  requireAuth: string[] = [],
+  requireAuth: string[] = []
 ) {
   return async (req: NextRequest, next: NextFetchEvent) => {
     const pathname = req.nextUrl.pathname.split("/")[1];
@@ -31,8 +32,12 @@ export default function WithAuth(
           return NextResponse.redirect(new URL("/", req.url));
         }
 
-        if(token.role !== 'admin' && onlyAdmin.includes(pathname)) {
-            return NextResponse.redirect(new URL("/", req.url));
+        if (token.role !== "admin" && onlyAdmin.includes(pathname)) {
+          return NextResponse.redirect(new URL("/", req.url));
+        }
+
+        if (token.role !== "editor" && onlyEditor.includes(pathname)) {
+          return NextResponse.redirect(new URL("/", req.url));
         }
       }
     }

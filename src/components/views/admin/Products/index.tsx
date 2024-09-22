@@ -9,11 +9,12 @@ import ModalAddProduct from "./ModalAddProduct";
 import ModalUpdateProduct from "./ModalUpdateProduct";
 import ModalDeleteProduct from "./ModalDeleteProduct";
 import { ToasterContext } from "@/contexts/ToasterContext";
+import EditorLayout from "@/components/layouts/EditorLayout";
 
 type PropTypes = {
   products: Product[];
 };
-const ProductsAdminView = (props: PropTypes) => {
+const ProductsEditorView = (props: PropTypes) => {
   const { products } = props;
   const [productsData, setProductsData] = useState<Product[]>([]);
   const [modalAddProduct, setModalAddProduct] = useState(false);
@@ -25,7 +26,7 @@ const ProductsAdminView = (props: PropTypes) => {
   }, [products]);
   return (
     <>
-      <AdminLayout>
+      <EditorLayout>
         <div className={styles.products}>
           <h1>Products Management</h1>
           <Button
@@ -41,22 +42,18 @@ const ProductsAdminView = (props: PropTypes) => {
                 <th rowSpan={2}>#</th>
                 <th rowSpan={2}>Image</th>
                 <th rowSpan={2}>Name</th>
+                <th rowSpan={2}>Teacher</th>
                 <th rowSpan={2}>Category</th>
                 <th rowSpan={2}>Price</th>
-                <th colSpan={2}>Stock</th>
                 <th rowSpan={2}>Action</th>
-              </tr>
-              <tr>
-                <th>Size</th>
-                <th>Qty</th>
               </tr>
             </thead>
             <tbody>
               {productsData.map((product, index) => (
                 <Fragment key={product.id}>
                   <tr>
-                    <td rowSpan={product.stock.length}>{index + 1}</td>
-                    <td rowSpan={product.stock.length}>
+                    <td >{index + 1}</td>
+                    <td >
                       <Image
                         src={product.image}
                         alt={product.name}
@@ -64,14 +61,13 @@ const ProductsAdminView = (props: PropTypes) => {
                         height={100}
                       />
                     </td>
-                    <td rowSpan={product.stock.length}>{product.name}</td>
-                    <td rowSpan={product.stock.length}>{product.category}</td>
-                    <td rowSpan={product.stock.length}>
+                    <td>{product.name}</td>
+                    <td>{product.username}</td>
+                    <td>{product.category}</td>
+                    <td>
                       {convertIDR(product.price)}
                     </td>
-                    <td>{product.stock[0].size}</td>
-                    <td>{product.stock[0].qty}</td>
-                    <td rowSpan={product.stock.length}>
+                    <td>
                       <div className={styles.products__table__action}>
                         <Button
                           type="button"
@@ -90,24 +86,13 @@ const ProductsAdminView = (props: PropTypes) => {
                       </div>
                     </td>
                   </tr>
-                  {product.stock.map(
-                    (stock: { size: string; qty: number }, index: number) => (
-                      <Fragment key={stock.size}>
-                        {index > 0 && (
-                          <tr>
-                            <td>{stock.size}</td>
-                            <td>{stock.qty}</td>
-                          </tr>
-                        )}
-                      </Fragment>
-                    )
-                  )}
+                  
                 </Fragment>
               ))}
             </tbody>
           </table>
         </div>
-      </AdminLayout>
+      </EditorLayout>
       {modalAddProduct && (
         <ModalAddProduct
           setModalAddProduct={setModalAddProduct}
@@ -132,4 +117,4 @@ const ProductsAdminView = (props: PropTypes) => {
   );
 };
 
-export default ProductsAdminView;
+export default ProductsEditorView;

@@ -10,15 +10,16 @@ type Proptypes = {
     url: string;
     icon: string;
   }>;
+  name: string;
 };
 
 const Sidebar = (props: Proptypes) => {
-  const { lists } = props;
+  const { lists, name } = props;
   const {pathname} = useRouter();
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebar__top}>
-        <h1 className={styles.sidebar__top__title}>Admin Panel</h1>
+        <h1 className={styles.sidebar__top__title}>{name} Panel</h1>
         <div className={styles.sidebar__top__lists}>
           {lists.map((list, index) => (
             <Link href={list.url} key={list.title} className={`${styles.sidebar__top__lists__item} ${pathname === list.url && styles.sidebar__top__lists__item__active}`}>
@@ -31,7 +32,10 @@ const Sidebar = (props: Proptypes) => {
         </div>
       </div>
       <div className={styles.sidebar__bottom}>
-        <Button className={styles.sidebar__bottom__button} type="button" variant="secondary" onClick={() => signOut()}>Logout</Button>
+        <Button className={styles.sidebar__bottom__button} type="button" variant="secondary"> <Link href={"/"} > Kembali ke Home</Link></Button>
+      
+        <Button className={styles.sidebar__bottom__button} type="button" variant="secondary" onClick={() => signOut({ callbackUrl: '/' })
+}>Logout</Button>
       </div>
     </div>
   );

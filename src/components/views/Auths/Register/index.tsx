@@ -6,6 +6,7 @@ import Button from "@/components/ui/Button";
 import authServices from "@/services/auth";
 import AuthLayout from "@/components/layouts/AuthLayout";
 import { ToasterContext } from "@/contexts/ToasterContext";
+import Select from "@/components/ui/Select";
 const RegisterView = () => {
   const { setToaster } = useContext(ToasterContext);
   const [isLoading, setisLoading] = useState(false);
@@ -20,6 +21,8 @@ const RegisterView = () => {
       fullname: form.fullname.value,
       phone: form.phone.value,
       password: form.password.value,
+      gender: form.gender.value,
+      role: form.role.value
     };
 
     try {
@@ -40,6 +43,8 @@ const RegisterView = () => {
         });
       }
     } catch (error) {
+        console.log(error);
+
       setisLoading(false);
       setToaster({
         variant: "danger",
@@ -79,6 +84,24 @@ const RegisterView = () => {
           label="Password"
           name="password"
           type="password"
+        />
+        <Select
+          className={styles.register__input}
+          label="Gender"
+          name="gender"
+          options={[
+            { label: "Male", value: "male" },
+            { label: "Female", value: "female" },
+          ]}
+        />
+        <Select
+          className={styles.register__input}
+          label="Role"
+          name="role"
+          options={[
+            { label: "Member", value: "member" },
+            { label: "Guru", value: "guru" },
+          ]}
         />
         <Button
           type="submit"

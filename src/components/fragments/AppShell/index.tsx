@@ -3,7 +3,7 @@ import { Lato } from "next/font/google";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import NavBar from "../Navbar";
-import { Dispatch, SetStateAction, useContext, useEffect } from "react";
+import {useContext} from "react";
 import { ToasterContext } from "@/contexts/ToasterContext";
 import { ToasterType } from "@/types/toaster.type";
 
@@ -12,7 +12,7 @@ const lato = Lato({
   weight: ["100", "300", "400", "700", "900"],
 });
 
-const disableNavbar = ["auth", "admin", "member"];
+const disableNavbar = ["auth", "guru", "member", 'admin', 'invoice'];
 
 type PropTypes = {
   children: React.ReactNode;

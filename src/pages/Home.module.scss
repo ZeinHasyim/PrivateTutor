@@ -1,0 +1,118 @@
+/* styles/Home.module.scss */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  padding: 1rem;
+  background-color: #282c34;
+  color: white;
+  text-align: center;
+}
+
+.main {
+  flex: 1;
+  padding: 2rem;
+  //   margin-top: 150px;
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+
+    // Menambahkan background image
+    background-image: url("../images/Jumbotron.jpeg"); // Ganti dengan path gambar Anda
+    background-size: cover; // Mengatur gambar untuk menutupi seluruh jumbotron
+    background-position: center; // Memusatkan gambar
+    background-repeat: no-repeat; // Menghindari pengulangan gambar
+    text-align: center;
+    background-color: #282c34;
+    color: black;
+    height: 500px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    &__title {
+      margin: 0;
+    }
+    &__description {
+      margin-top: 10px;
+    }
+  }
+  &__features {
+    padding: 2rem;
+    &__title {
+      text-align: center;
+    }
+  }
+  &__featureContainer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+    height: 500px;
+  }
+  &__feature {
+    &__content {
+      
+    }
+    &__first {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      flex-direction: column;
+      width: 30%;
+      height: 20vh;
+      padding: 1rem;
+      background-color: #332f2f;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin-top: 10px;
+    }
+    &__second {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      width: 30%;
+      height: 20vh;
+      padding: 1rem;
+      background-color: #925221;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin-top: 10px;
+    }
+    &__third {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      width: 30%;
+      height: 20vh;
+      padding: 1rem;
+      background-color: #332f2f;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin-top: 10px;
+    }
+    &__content {
+      margin-top: 10px;
+      color: white;
+    }
+  }
+}
+
+.footer {
+  padding: 1rem;
+  background-color: #282c34;
+  color: white;
+  text-align: center;
+}

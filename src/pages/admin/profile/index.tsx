@@ -1,9 +1,7 @@
-const AdminProfilePage = () => {
-    return(
-        <div>
-            <div>Admin Page</div>
-        </div>
-    )
+import ProfileAdminView from "@/components/views/Admin/Profile";
+
+const ProfilePage = () => {
+    return <ProfileAdminView />;
 };
 
-export default AdminProfilePage;
+export default ProfilePage;

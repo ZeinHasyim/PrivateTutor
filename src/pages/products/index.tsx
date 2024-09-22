@@ -1,23 +1,26 @@
 import ProductView from "@/components/views/Products";
 import productServices from "@/services/product";
+import profilesServices from "@/services/profiles";
+import userServices from "@/services/user";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 
 const ProductPage = () => {
-    const [products, setProducts] = useState([]);
-    const getAllProducts = async () => {
-    const { data } = await productServices.getAllProducts();
-    setProducts(data.data);
-  };
+    const [gurus, setGurus] = useState([]);
+    const getAllGurus = async () => {
+        const { data } = await userServices.getUserAproved();
+        setGurus(data.data);
+
+    };
   useEffect(() => {
-    getAllProducts();
+    getAllGurus();
   }, []);
   return (
     <>
       <Head>
-        <title>Products</title>
+        <title>Guru</title>
       </Head>
-      <ProductView products={products}/>
+      <ProductView gurus={gurus}/>
     </>
   );
 };

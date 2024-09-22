@@ -2,11 +2,12 @@ import {
   addData,
   deleteData,
   retriveData,
+  retriveDataByField,
   retriveDataById,
   updateData,
 } from "@/lib/firebase/service";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { verify } from "@/utils/verifyToken";
+import { verify, verifyLocal } from "@/utils/verifyToken";
 import {
   responseApiFailed,
   responseApiMethodNotAllowed,
@@ -18,23 +19,26 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method == "GET") {
-    const { product }: any = req.query;
-    if (product && product[0]) {
-      const data = await retriveDataById("products", product[0]);
-      responseApiSuccess(res, data);
-    } else {
-      const data = await retriveData("products");
-      responseApiSuccess(res, data);
-    }
+    verifyLocal(req, res, true, async (token: any) => {
+      const { product }: any = req.query;
+      if (product && product[0]) {
+        const data = await retriveDataById("products", product[0]);
+        responseApiSuccess(res, data);
+      } else {
+        let data;
+        data = token.role === "admin" ? await retriveDataByField("products", "user_id", token.id) : await retriveData("products") ;
+        responseApiSuccess(res, data);
+      }
+    });
+
   } else if (req.method === "POST") {
-    verify(req, res, true, async () => {
+    verify(req, res, true, async (token: any) => {
       let data = req.body;
       data.created_at = new Date();
       data.updated_at = new Date();
       data.price = parseInt(data.price);
-      data.stock.filter((stock: any) => {
-        stock.qty = parseInt(stock.qty);
-      });
+      data.user_id = token.id;
+      data.username = token.fullname;
       await addData("products", data, (status: boolean, result: any) => {
         if (status) {
           responseApiSuccess(res, { id: result.id });

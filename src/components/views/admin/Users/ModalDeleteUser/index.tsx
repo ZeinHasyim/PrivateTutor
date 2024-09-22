@@ -19,6 +19,7 @@ const ModalDeleteUser = (props: Proptypes) => {
 
   const handleDelete = async () => {
     const result = await userServices.deleteUser(deletedUser.id);
+    console.log(deletedUser.id)
     if (result.status === 200) {
       setIsLoading(false);
       setToaster({

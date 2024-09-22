@@ -1,57 +1,30 @@
-import styles from "./Products.module.scss";
-import { Product } from "@/types/product.type";
-import Card from "./Card";
+import styles from "./Category.module.scss";
 import Link from "next/link";
+import { Profile } from "@/types/profile.type";
+import { useState } from "react";
+import Image from "next/image";
+import convertIDR from "@/utils/currency";
+import { User } from "@/types/user.type";
+import Button from "@/components/ui/Button";
+import { useRouter } from "next/router";
 
 type Proptypes = {
-  products: Product[];
+  gurus: User[];
 };
 
 const ProductView = (props: Proptypes) => {
-  const { products } = props;
+    const { pathname, push } = useRouter();
+
   return (
-    <div className={styles.product}>
-      <h1 className={styles.product__title}>All Products {products.length}</h1>
-      <div className={styles.product__main}>
-        <div className={styles.product__main__filter}>
-          <div className={styles.product__main__filter__data__title}></div>
-          <div className={styles.product__main__filter__data}>
-            <h4 className={styles.product__main__filter__data__title}>
-              Gender
-            </h4>
-            <div className={styles.product__main__filter__data__list}>
-              <div className={styles.product__main__filter__data__list__item}>
-                <input type="checkbox" id="men" />
-                <label
-                  htmlFor="men"
-                  className={
-                    styles.product__main__filter__data__list__item__label
-                  }
-                >
-                  Men
-                </label>
-              </div>
-              <div className={styles.product__main__filter__data__list__item}>
-                <input type="checkbox" id="women" />
-                <label
-                  htmlFor="women"
-                  className={
-                    styles.product__main__filter__data__list__item__label
-                  }
-                >
-                  Women
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.product__main__content}>
-          {products.map((product) => (
-            <Link key={product.id} href={`/products/${product.id}`}>
-              <Card product={product} />
-            </Link>
-          ))}
-        </div>
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <h1>Pilih Kategori</h1>
+      <div className={styles.content__flex}>
+        <Button onClick={() => push(`/products/Seni`)} type="button">Seni</Button>
+        <Button onClick={() => push(`/products/Olahraga`)} type="button">Olahraga</Button>
+        <Button onClick={() => push(`/products/Teknologi dan Komputer`)} type="button">Teknologi dan Komputer</Button>
+        <Button onClick={() => push(`/products/Mengaji`)} type="button">Mengaji</Button>
+      </div>
       </div>
     </div>
   );

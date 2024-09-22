@@ -79,6 +79,7 @@ const ModalUpdateUser = (props: Proptypes) => {
           options={[
             { label: "Member", value: "member" },
             { label: "Admin", value: "admin" },
+            { label: "Editor", value: "editor" },
           ]}
         />
         <Button type="submit">{isLoading ? "Updating..." : "Update"}</Button>

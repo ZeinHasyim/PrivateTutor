@@ -1,4 +1,4 @@
-import ProductsAdminView from "@/components/views/Admin/Products";
+import ProductsEditorView from "@/components/views/Admin/Products";
 import productServices from "@/services/product";
 import { useEffect, useState } from "react";
 
@@ -11,7 +11,7 @@ const AdminProductsPage = () => {
   useEffect(() => {
     getAllProducts();
   }, []);
-  return <ProductsAdminView products={products}  />;
+  return <ProductsEditorView products={products}  />;
 };
 
 export default AdminProductsPage;

@@ -1,20 +1,21 @@
 .detail {
-  padding: 20vh 20vw;
+  padding: 20vh 10vw;
   &__main {
     display: flex;
-    gap: 60px;
+    gap: 40px;
     &__left {
-      width: 60%;
+      width: 40%;
       &__image {
         width: 100%;
         aspect-ratio: 1 /1;
         height: auto;
-        border-radius: 8px;;
+        border-radius: 8px;
+        object-fit: cover;
       }
     }
 
     &__right {
-      width: 40%;
+      width: 60%;
       &__category {
         color: #847d7d;
         margin-top: 5px;
@@ -66,4 +67,13 @@
       }
     }
   }
+}
+.checkbox_wrapper{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+.total_harga{
+    color: green;
+    font-size: 20px;
 }

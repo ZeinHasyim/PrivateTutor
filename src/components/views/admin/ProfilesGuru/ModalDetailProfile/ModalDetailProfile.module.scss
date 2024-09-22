@@ -1,0 +1,145 @@
+.profile {
+  &__profilePicture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    flex-direction: column;
+    padding: 40px;
+    &__image {
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+      background-color: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      font-weight: bold;
+      object-fit: cover;
+      object-position: center;
+      margin-bottom: 40px;
+    }
+  }
+  h2 {
+    text-align: center;
+  }
+  &__border {
+    display: flex;
+  &__name {
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 35px;
+    font-size: large;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  }
+}
+  &__KTP {
+    width: 50%;
+    align-items: center;
+    justify-content: center;  
+    border-radius: 8px;
+    flex-direction: column;
+    padding: 40px;
+  }
+  &__certificate {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    flex-direction: column;
+    padding: 40px;
+    &__image {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 16px;
+      &__preview {
+        width: 100%;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        border-radius: 8px;
+        padding: 20px;
+        background-color: white;
+      }
+    }
+  }
+  &__description {
+    border-radius: 8px;
+    padding: 40px;
+  }
+  &__hari{
+    margin-top: 10px !important;
+    margin-bottom: 2px !important;
+    align-items: center;
+    justify-content: center;
+}
+}
+
+// .avatar {
+//     width: 25%;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+//     border-radius: 8px;
+//     flex-direction: column;
+//     padding: 40px;
+//     &__image {
+//         border-radius: 50%;
+//         width: 200px;
+//         height: 200px;
+//         background-color: #eee;
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+//         font-size: 64px;
+//         font-weight: bold;
+//         object-fit: cover;
+//         object-position: center;
+//     }
+// }
+
+.form {
+    &__input{
+      margin: 20px 0;
+    }
+    &__button_flex{
+      display: flex;
+      gap: 10px;
+      &__btn_aprove{
+          width: 100%;
+          background-color: #fce343;
+          padding: 15px;
+          color: #000;
+          border: none;
+          cursor: pointer;
+          font-size: 16px;
+          font-weight: 700;
+          border-radius: 8px;
+      }
+      &__btn_decline{
+          width: 100%;
+          background-color: #ff6363;
+          padding: 15px;
+          color: #fff;
+          border: none;
+          cursor: pointer;
+          font-size: 16px;
+          font-weight: 700;
+          border-radius: 8px;
+      }
+    }
+    width: 100%;
+
+  }
+
+
+  .checkbox_wrapper{
+      display: flex;
+      gap: 10px;
+      margin-bottom: 14px;
+      font-size: 25px;
+  }

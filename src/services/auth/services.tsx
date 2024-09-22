@@ -7,7 +7,7 @@ export async function signUp(
     fullname: string;
     password: string;
     phone: string;
-    role?: string;
+    role?: 'admin' | 'editor'| 'member';
     created_at?: Date;
     updated_at?: Date;
     image?: string;
