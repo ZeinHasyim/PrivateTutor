@@ -21,7 +21,7 @@ const ProductPage = () => {
     };
   useEffect(() => {
     getAllGurus();
-  }, []);
+  }, [getAllGurus]);
   return (
     <>
       <Head>
