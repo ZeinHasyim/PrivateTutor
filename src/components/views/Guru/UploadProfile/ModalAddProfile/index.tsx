@@ -149,7 +149,7 @@ const ModalAddProfile = (props: Proptypes) => {
             setProfilesData(data.data);
             setToaster({
                 variant: "success",
-                message: "Success Add Product",
+                message: "Success Add Profile",
             });
         }
 
