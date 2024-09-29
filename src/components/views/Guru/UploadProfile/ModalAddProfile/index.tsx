@@ -316,7 +316,7 @@ const ModalAddProfile = (props: Proptypes) => {
                     placeholder="Insert Profile Description"
                     className={styles.form__input}
                 />
-                <Button disabled={isLoading}>
+                <Button type="button"disabled={isLoading}>
                     {isLoading ? "Loading..." : "Add Profile"}
                 </Button>
             </form>
