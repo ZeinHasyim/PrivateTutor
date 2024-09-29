@@ -1,9 +1,4 @@
 import styles from "./Category.module.scss";
-import Link from "next/link";
-import { Profile } from "@/types/profile.type";
-import { useState } from "react";
-import Image from "next/image";
-import convertIDR from "@/utils/currency";
 import { User } from "@/types/user.type";
 import Button from "@/components/ui/Button";
 import { useRouter } from "next/router";
