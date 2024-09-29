@@ -15,16 +15,36 @@ const RegisterView = () => {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setisLoading(true);
+    
     const form = event.target as HTMLFormElement;
+  
+    // Mengakses elemen form dengan nama yang sesuai
+    const emailElement = form.elements.namedItem('email') as HTMLInputElement | null;
+    const fullnameElement = form.elements.namedItem('fullname') as HTMLInputElement | null;
+    const phoneElement = form.elements.namedItem('phone') as HTMLInputElement | null;
+    const passwordElement = form.elements.namedItem('password') as HTMLInputElement | null;
+    const genderElement = form.elements.namedItem('gender') as HTMLSelectElement | null;
+    const roleElement = form.elements.namedItem('role') as HTMLSelectElement | null;
+  
+    // Memeriksa apakah semua elemen ada
+    if (!emailElement || !fullnameElement || !phoneElement || !passwordElement || !genderElement || !roleElement) {
+      setisLoading(false);
+      setToaster({
+        variant: "danger",
+        message: "All fields are required",
+      });
+      return;
+    }
+  
     const data = {
-      email: form.email.value,
-      fullname: form.fullname.value,
-      phone: form.phone.value,
-      password: form.password.value,
-      gender: form.gender.value,
-      role: form.role.value
+      email: emailElement.value,
+      fullname: fullnameElement.value,
+      phone: phoneElement.value,
+      password: passwordElement.value,
+      gender: genderElement.value,
+      role: roleElement.value
     };
-
+  
     try {
       const result = await authServices.registerAccount(data);
       if (result.status === 200) {
@@ -43,8 +63,7 @@ const RegisterView = () => {
         });
       }
     } catch (error) {
-        console.log(error);
-
+      console.log(error);
       setisLoading(false);
       setToaster({
         variant: "danger",
