@@ -34,7 +34,7 @@ const DetailProductView = (props: PropTypes) => {
     const { setToaster } = useContext(ToasterContext);
     const { status, data }: any = useSession();
     const user = data?.user;
-    const [selectedDays, setSelectedDays] = useState([]);
+    const [selectedDays, setSelectedDays] = useState<string[]>([]);
 
     // Handler untuk mengelola perubahan checkbox
     const handleCheckboxChange = (event : any) => {
