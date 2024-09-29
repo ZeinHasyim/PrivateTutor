@@ -15,13 +15,13 @@ import { uploadFile } from "@/lib/firebase/service";
 import Image from "next/image";
 import { ToasterContext } from "@/contexts/ToasterContext";
 import productServices from "@/services/product";
-import { Order } from "@/types/order.type";
+
 import orderServices from "@/services/order";
 
 type Proptypes = {
-    updatedOrder: Order | any;
+    updatedOrder:  any;
     setUpdatedOrder: Dispatch<SetStateAction<boolean>>;
-    setOrdersData: Dispatch<SetStateAction<Order[]>>;
+    setOrdersData: Dispatch<SetStateAction<any[]>>;
 };
 
 const ModalUpdateOrder = (props: Proptypes) => {
