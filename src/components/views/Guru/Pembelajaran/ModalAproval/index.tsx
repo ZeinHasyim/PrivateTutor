@@ -15,7 +15,6 @@ import { uploadFile } from "@/lib/firebase/service";
 import Image from "next/image";
 import { ToasterContext } from "@/contexts/ToasterContext";
 import productServices from "@/services/product";
-import { Order } from "@/types/order.type";
 import orderServices from "@/services/order";
 import { Pembelajaran } from "@/types/pembelajaran.type";
 import pembelajaranServices from "@/services/pembelajaran";

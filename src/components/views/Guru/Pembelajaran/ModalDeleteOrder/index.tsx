@@ -4,12 +4,12 @@ import styles from "./ModalDeleteOrder.module.scss";
 import { Dispatch, SetStateAction, useContext, useState } from "react";
 import { ToasterContext } from "@/contexts/ToasterContext";
 import orderServices from "@/services/order";
-import { Order } from "@/types/order.type";
+
 
 type Proptypes = {
-  setOrdersData: Dispatch<SetStateAction<Order[]>>;
+  setOrdersData: Dispatch<SetStateAction<any[]>>;
   setDeletedOrder: Dispatch<SetStateAction<{}>>;
-  deletedOrder: Order | any;
+  deletedOrder:  any;
 };
 
 const ModalDeleteOrder = (props: Proptypes) => {
