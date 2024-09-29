@@ -5,19 +5,18 @@ import userServices from "@/services/user";
 import ModalDetailOrder from "./ModalDetailOrder"
 import AdminLayout from "@/components/layouts/AdminLayout";
 import orderServices from "@/services/order";
-import { Order } from "@/types/order.type";
 import ModalDeleteOrder from "./ModalDeleteOrder";
 import ModalUpdateOrder from "./ModalUpdateOrder";
 
 type PropTypes = {
-    orders: Order[];
+    orders: any[];
 };
 
 const AdminOrdersView = (props: PropTypes) => {
     const { orders } = props;
-    const [ordersData, setOrdersData] = useState<Order[]>([]);
-    const [updatedOrder, setUpdatedOrder] = useState<Order | {}>({});
-    const [deletedOrder, setDeletedOrder] = useState<Order | {}>({});
+    const [ordersData, setOrdersData] = useState<any[]>([]);
+    const [updatedOrder, setUpdatedOrder] = useState<any | {}>({});
+    const [deletedOrder, setDeletedOrder] = useState<any | {}>({});
 
     useEffect(() => {
         setOrdersData(orders);
