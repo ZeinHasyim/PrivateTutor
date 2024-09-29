@@ -179,6 +179,7 @@ const DetailProductView = (props: PropTypes) => {
                                 onChange={handleTotalHarga}
                             />
                             <div style={{ marginBottom: "20px" }}>
+                                <h3>Pilih Hari</h3>
                                 {guru.profile?.day.map((day : any, index :number)=> (
                                     <div key={index}>
                                         <input type="checkbox" id={index} value={`${day.hari} | ${day.jam}`} onChange={handleCheckboxChange} name="day"/>

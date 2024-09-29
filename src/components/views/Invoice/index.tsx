@@ -14,6 +14,7 @@ const InvoiceView = ({ pembelajaran }: PropTypes) => {
     //     window.print();
     //     setPrint(true);
     // }, []);
+    console.log(pembelajaran)
     return (
         <div className={styles.invoice}>
             <header className={styles.invoice__header}>
