@@ -8,13 +8,12 @@ import {
     useState,
 } from "react";
 import { ToasterContext } from "@/contexts/ToasterContext";
-import { Order } from "@/types/order.type";
 import { Pembelajaran } from "@/types/pembelajaran.type";
 
 type Proptypes = {
     progres: Pembelajaran | any;
     setProgres: Dispatch<SetStateAction<boolean>>;
-    setPembelajaranData: Dispatch<SetStateAction<Order[]>>;
+    setPembelajaranData: Dispatch<SetStateAction<any[]>>;
 };
 
 const ModalProgres = (props: Proptypes) => {
