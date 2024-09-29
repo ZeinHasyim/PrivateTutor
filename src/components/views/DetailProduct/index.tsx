@@ -180,7 +180,7 @@ const DetailProductView = (props: PropTypes) => {
                             />
                             <div style={{ marginBottom: "20px" }}>
                                 <h3>Pilih Hari</h3>
-                                {guru.profile?.day.map((day : any, index :number)=> (
+                                {guru.profile?.day.map((day : any, index :any)=> (
                                     <div key={index}>
                                         <input type="checkbox" id={index} value={`${day.hari} | ${day.jam}`} onChange={handleCheckboxChange} name="day"/>
                                         <label htmlFor={index}>{day.hari} | {day.jam}</label>
